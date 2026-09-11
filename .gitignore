@@ -1,0 +1,9 @@
+# build artifacts
+*.o
+*.out
+*.class
+__pycache__/
+*.pyc
+_build/
+.beam
+*.beam
