@@ -6,3 +6,15 @@ Este documento acumulará, a cada etapa, as decisões de projeto tomadas (lingua
 
 - Problema definido: validação e análise de legalidade de baralhos (ver `problema.md` / `especificacao.md`).
 - Linguagens candidatas por paradigma listadas na seção 11 de `especificacao.md`; escolha definitiva será registrada aqui a partir da Etapa 03.
+
+## [P4-ETAPA-02]
+
+- Formalização do contrato semântico de dados e especificação detalhada dos 5 casos de exemplo e 3 casos-limite no documento `/testes/casos.md`.
+
+## [P4-ETAPA-03]
+
+- **Linguagem Escolhida**: Python 3 (estilo estritamente procedural/imperativo).
+- **Estruturas de Dados**: Dicionários (`dict`) e listas (`list`) primitivas para representação do commander e das cartas. Nenhuma classe/orientação a objetos foi utilizada.
+- **Modelo de Estado**: Mantido através de coleções e acumuladores mutáveis (`violacoes = []`, `total_cartas += 1`, `contagens[nome] += 1`).
+- **Efeitos Colaterais**: Utilizados intencionalmente nos subprogramas de validação, que mutacionam diretamente a lista de violações recebida por referência.
+- **Suíte de Testes**: Implementada em `/testes/test_imperativo.py` executando 8 casos de teste cobrindo todas as 6 regras do problema e estatísticas.
