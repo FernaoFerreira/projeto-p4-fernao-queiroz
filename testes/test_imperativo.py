@@ -38,7 +38,7 @@ class TestImperativo(unittest.TestCase):
         return terrenos
 
     def test_caso_1_baralho_legal_simples(self):
-        """Caso 1: Baralho com 100 cartas válidas (36 terrenos + 63 não-terrenos + commander)."""
+        """Caso 1 (Exemplo 1): Baralho legal simples de 100 cartas (36 terrenos + 63 não-terrenos + commander)"""
         cartas = self._gerar_terrenos_basicos(12)  # 36 terrenos
         for i in range(1, 64):
             cartas.append({
@@ -62,7 +62,7 @@ class TestImperativo(unittest.TestCase):
         self.assertEqual(est["distribuicao_cores"], {"W": 1, "U": 0, "B": 0, "R": 1, "G": 64})
 
     def test_caso_2_tamanho_incorreto(self):
-        """Caso 2: Baralho com apenas 80 cartas (total 81 com o commander)."""
+        """Caso 2 (Exemplo 2): Baralho com tamanho incorreto (80 cartas no baralho + 1 commander = 81)"""
         cartas = self._gerar_terrenos_basicos(10)  # 30 terrenos
         for i in range(1, 51):
             cartas.append({
@@ -81,7 +81,7 @@ class TestImperativo(unittest.TestCase):
         self.assertEqual(res["estatisticas"]["total_cartas"], 81)
 
     def test_caso_3_singleton_duplicada(self):
-        """Caso 3: Carta não-terreno duplicada ('Sol Ring' ×2)."""
+        """Caso 3 (Exemplo 3): Carta não-terreno e não-básica duplicada ('Sol Ring' x2)"""
         cartas = self._gerar_terrenos_basicos(12)  # 36 terrenos
         for i in range(1, 62):
             cartas.append({
@@ -102,7 +102,7 @@ class TestImperativo(unittest.TestCase):
         self.assertIn("singleton", regras_violadas)
 
     def test_caso_4_identidade_cor_invalida(self):
-        """Caso 4: Carta com cor azul ('Counterspell' [U]) em commander R/G/W."""
+        """Caso 4 (Exemplo 4): Violação de identidade de cor ('Counterspell' [U] fora de R/G/W)"""
         cartas = self._gerar_terrenos_basicos(12)  # 36 terrenos
         for i in range(1, 63):
             cartas.append({
@@ -127,7 +127,7 @@ class TestImperativo(unittest.TestCase):
         self.assertIn("identidade de cor", regras_violadas)
 
     def test_caso_5_multiplas_violacoes(self):
-        """Caso 5: Múltiplas violações simultâneas (tamanho, singleton, cor)."""
+        """Caso 5 (Exemplo 5): Múltiplas violações simultâneas (tamanho, singleton e identidade de cor)"""
         cartas = self._gerar_terrenos_basicos(10)  # 30 terrenos
         for i in range(1, 58):
             cartas.append({
@@ -150,7 +150,7 @@ class TestImperativo(unittest.TestCase):
         self.assertIn("identidade de cor", regras_violadas)
 
     def test_caso_6_baralho_vazio(self):
-        """Caso 6 (Caso-Limite 1): Baralho sem cartas (apenas o commander)."""
+        """Caso 6 (Caso-Limite 1): Baralho vazio (apenas o commander)"""
         res = analisar_baralho(self.commander_marisi, [])
 
         self.assertFalse(res["legal"])
@@ -164,7 +164,7 @@ class TestImperativo(unittest.TestCase):
         self.assertEqual(est["custo_medio_nao_terrenos"], 4.0)
 
     def test_caso_7_limites_tamanho(self):
-        """Caso 7 (Caso-Limite 2): 99 total vs 100 total vs 101 total."""
+        """Caso 7 (Caso-Limite 2): Limites estritos de tamanho (99 vs 100 vs 101 cartas totais)"""
         # 7a: 98 no baralho (total 99)
         c_98 = self._gerar_terrenos_basicos(12)  # 36
         for i in range(1, 63):  # 62 cartas não-terreno
@@ -185,7 +185,7 @@ class TestImperativo(unittest.TestCase):
         self.assertFalse(res_101["legal"])
 
     def test_caso_8_regras_especificas(self):
-        """Caso 8 (Caso-Limite 3): Terreno não-básico duplicado, commander no baralho, nome vazio e custos."""
+        """Caso 8 (Caso-Limite 3): Terreno não-básico duplicado, commander no baralho, nome vazio e custos inválidos"""
         # 8a: Terreno não-básico duplicado
         cartas_8a = self._gerar_terrenos_basicos(12) # 36
         for i in range(1, 62):
@@ -217,4 +217,4 @@ class TestImperativo(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
