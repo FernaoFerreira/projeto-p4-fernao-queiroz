@@ -18,3 +18,12 @@ Este documento acumulará, a cada etapa, as decisões de projeto tomadas (lingua
 - **Modelo de Estado**: Mantido através de coleções e acumuladores mutáveis (`violacoes = []`, `total_cartas += 1`, `contagens[nome] += 1`).
 - **Efeitos Colaterais**: Utilizados intencionalmente nos subprogramas de validação, que mutacionam diretamente a lista de violações recebida por referência.
 - **Suíte de Testes**: Implementada em `/testes/test_imperativo.py` executando 8 casos de teste cobrindo todas as 6 regras do problema e estatísticas.
+
+## [P4-ETAPA-04]
+
+- **Linguagem Escolhida**: Python 3 (paradigma orientado a objetos).
+- **Modelagem de Domínio**: Hierarquia de cartas (`Carta`, `CartaTerreno`, `CartaNaoTerreno`, `Commander`), Agregado `Baralho` e Objetos de Valor de Relatório.
+- **Encapsulamento e Estado**: Atributos protegidos por `@property` com estado mantido nos próprios objetos do domínio.
+- **Polimorfismo e Herança**: Aplicados no filtro de regras de cartas (`sujeita_a_singleton()`, `eh_terreno()`) e na hierarquia de regras de legalidade (`RegraLegalidade` via padrão Strategy).
+- **Suíte de Testes**: Implementada em `/testes/test_poo.py` executando os 9 testes formais contra a implementação OO.
+- **Reflexão**: Registrada em `/poo/reflexao.md` detalhando as diferenças conceituais em relação à implementação imperativa.
