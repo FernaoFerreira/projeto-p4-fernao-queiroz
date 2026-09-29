@@ -43,7 +43,7 @@ projeto-p4-fernao/
 | 01 — Proposta e especificação do problema | `[P4-ETAPA-01]` | ✅ concluída |
 | 02 — Contrato semântico e testes | `[P4-ETAPA-02]` | ✅ concluída |
 | 03 — Implementação imperativa | `[P4-ETAPA-03]` | ✅ concluída |
-| 04 — Implementação orientada a objetos | `[P4-ETAPA-04]` | ⬜ pendente |
+| 04 — Implementação orientada a objetos | `[P4-ETAPA-04]` | ✅ concluída |
 | 05 — Implementação funcional | `[P4-ETAPA-05]` | ⬜ pendente |
 | 06 — Implementação lógica | `[P4-ETAPA-06]` | ⬜ pendente |
 | 07 — Comparação final | `[P4-ETAPA-07]` | ⬜ pendente |
